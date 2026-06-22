@@ -1,3 +1,11 @@
+Justificación técnica de las decisiones
+
+Clientes: Los valores nulos en email y ciudad fueron reemplazados por valores controlados ("sin_email@empresa.com" y "Sin datos") para preservar el historial de clientes y evitar pérdida de información relevante para futuros análisis.
+
+Productos: El registro con precio nulo fue eliminado debido a que el precio es un atributo crítico para el cálculo de ingresos y márgenes. El registro con categoría nula fue reemplazado por "Sin Categoría" para mantener el producto disponible en el modelo sin asignarlo incorrectamente a una categoría existente.
+
+Modelo: Se aplicó una estructura de modelo estrella utilizando las dimensiones Dim_Clientes, Dim_Productos y Dim_Categorias, y la tabla de hechos Fact_Ventas. Además, se enriqueció Fact_Ventas mediante un Merge con Dim_Productos para incorporar el nombre y la categoría del producto.
+
 name=Dim_Clientes
 let
     // Source: leer la tabla cargada desde el Excel del libro
